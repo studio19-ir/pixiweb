@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
+import Modal from '../components/Modal';
 
 function Home() {
     const {User} = React.useContext(AuthContext);
+    const [isOpen, setIsOpen] = useState(false);
 
     const userList = [
       {
@@ -14,6 +16,12 @@ function Home() {
         pic:'https://lh3.googleusercontent.com/a/ACg8ocLDGpLkGlPdlxA9mmCEUKjIWTMOuN0cNfF_LdkpTk0E7nI=s96-c'
       }
     ]
+    const [Email, setEmail] = useState('')
+    
+    const openModal = (email) => {
+      setEmail(email);
+      setIsOpen(true);
+    }
 
   return (
   <div className="home_main">
@@ -22,7 +30,7 @@ function Home() {
       <div className="home_recent_list">
         {userList.map((item,index) => {
           return(
-            <div className='home_recent_item' key={index}>
+            <div className='home_recent_item' onClick={()=>openModal(item.name)} key={index}>
               <div>
               <img src={item.pic} width={'50px'} height={'50px'} style={{borderRadius:'50px'}}/>
               </div>
@@ -38,6 +46,7 @@ function Home() {
       <div className="title">SUGGESTION FOR YOU</div>
 
     </div>
+    {isOpen && <Modal setIsOpen={setIsOpen} username={Email}  />}
   </div>
   )
 }

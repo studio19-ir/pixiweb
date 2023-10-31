@@ -169,6 +169,168 @@ button.signin:hover {
 }
 .menubar_mobile{display: none;}
 .mobile_header{display: none;}
+
+ /* Modal */
+ .modal_darkBG {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    animation: fadein .2s;
+  }
+  .modal_center {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes enter {
+    from { display: block; scale: 0; opacity: 0; }
+    to {opacity: 1; scale: 1;}
+  }
+  @keyframes exit {
+    from {  opacity: 1;scale:1 }
+    to {opacity: 0; scale:0  }
+  }
+  @keyframes fadein {
+    from {  opacity: 0; }
+    to {opacity: 1;   }
+  }
+  @keyframes fadeout {
+    from {  opacity: 1; }
+    to {opacity: 0;   }
+  }
+  .exit{
+    animation : exit .2s!important;
+    /* display: none; */
+  }
+  .fadeout {
+    animation:fadeout .2s;
+  }
+
+
+  .modal_main{
+    background: white;
+    border-radius: 16px;
+    width: 40vw;
+    height: 80vh;
+    z-index: 10;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 5px 20px 0; 
+    animation: enter .2s;
+  }
+  .modal_modalHeader {
+    height: 50px;
+    background: white;
+    overflow: hidden;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+  
+  .modal_heading {
+    font-weight: 300;
+    margin: 0;
+    padding: 10px;
+    color: #2c3e50;
+    font-size: 18px;
+    text-align: center;
+  }
+  .modal_closebtn {
+    position: fixed;
+    right:15px;
+    top:15px;
+    cursor: pointer;
+  }
+  
+  .modal_modalContent {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+   
+  }
+  .modal_contentTop {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    /* border-radius: 16px; */
+    padding: 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.8)  0 1px 3px 0; */
+  }
+  .modal_topData{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    gap:1px
+  }
+  .modal_topData .dname{
+    font-weight: 900;
+    
+  }
+  .modal_topData .demail{
+    font-weight: 300;
+    font-size: 14px;
+    
+  }
+
+  .modal_topData .dfollow{
+    font-weight: 400;
+    align-self: flex-start;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2px 4px;
+    margin-top: 5px;
+    font-size: 12px;
+    
+  }
+  
+  .modal_modalActions {
+    position: absolute;
+    bottom: 2px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .modal_followData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 5px 0;
+  }
+  .modal_followDataItem {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .modal_followDataItem div:last-child {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  .modal_topActions .following{
+    border:1px black solid;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 5px 10px;
+    text-align: center;
+    cursor: pointer;
+
+  }
+  .modal_topActions .follow {
+    background-color: black;
+    color:white;
+    border:1px black solid;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 5px 10px;
+    text-align: center;
+  }
+  
+  .modal_actionsContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 @media screen and (max-width : 1199px) {
     .layout_main{
         flex-direction: column;
@@ -181,8 +343,9 @@ button.signin:hover {
     .mobile_header .logo {font-weight: 900;padding: 20px;font-size: 48px;text-align: center;color: white;}
     .mobile_header span.dot{color:var(--secondary)}
     .mobile_header .route {color:white;padding: 5px 20px;}
-    .menubar_mobile{display: flex;position: absolute; bottom: 0;left: 0;z-index: 10; background-color: var(--backcolor);width: 100%;border-top-right-radius: 50px;border-top-left-radius: 50px;}
+    .menubar_mobile{display: flex;position: fixed; bottom: 0;left: 0;z-index: 10; background-color: var(--backcolor);width: 100%;border-top-right-radius: 50px;border-top-left-radius: 50px;}
     .menubar_mobile ul {display: flex;justify-content: space-evenly;flex: 1;padding: 0;}
     .menubar_mobile ul li {display: flex; flex-direction: column;justify-content: center;align-items: center;}
+    .modal_main{width: 85vw;padding:10px ;}
     
 }

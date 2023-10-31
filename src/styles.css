@@ -139,6 +139,9 @@ button.signin:hover {
     display: flex;
     flex-direction: column;    
 }
+.home_recent{
+    padding: 20px 0;
+}
 .home_recent_list {
     display: flex;
     flex-direction: row;
@@ -163,4 +166,22 @@ button.signin:hover {
 .comm_main {
     display: flex;
     flex-direction: column;
+}
+.menubar_mobile{display: none;}
+.mobile_header{display: none;}
+@media screen and (max-width : 1199px) {
+    .layout_main{
+        flex-direction: column;
+    }
+    
+    .menubar{display: none;}
+    .layout_content{border-radius: 50px 50px 0 0;}
+    .mobile_header{display: flex;flex-direction:column;align-items: flex-start;}
+    .mobile_header .logo {font-weight: 900;padding: 20px;font-size: 48px;text-align: center;color: white;}
+    .mobile_header span.dot{color:var(--secondary)}
+    .mobile_header .route {color:white;padding: 5px 20px;}
+    .menubar_mobile{display: flex;position: absolute; bottom: 0;left: 0;z-index: 10; background-color: var(--backcolor);width: 100%;border-top-right-radius: 50px;border-top-left-radius: 50px;}
+    .menubar_mobile ul {display: flex;justify-content: space-evenly;flex: 1;padding: 0;}
+    .menubar_mobile ul li {display: flex; flex-direction: column;justify-content: center;align-items: center;}
+    
 }

@@ -17,11 +17,11 @@ function App() {
       path : '/',
       element : <Layout/>,
       children : [
-        {path:'/',element:<Home/>},
-        {path:'/community', element:<Community/>},
-        {path:'/maps',element:<Maps/>},
-        {path:'/events',element:<Events/>},
-        {path:'/profile',element:<Profile/>},
+        {path:'/',element:<Home/> },
+        {path:'/community', element:<Community/> },
+        {path:'/maps',element:<Maps /> },
+        {path:'/events',element:<Events /> },
+        {path:'/profile',element:<Profile /> },
       ],
     },
     { path:'*' , element:<PageNotFound/>}

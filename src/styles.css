@@ -331,6 +331,45 @@ button.signin:hover {
     justify-content: space-around;
     align-items: center;
   }
+  .images img {
+    margin:20px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px 1px black;
+    transition: all .3s;
+  }
+  .images img:hover {
+    transform: scale(1.1);
+  }
+  .images .desc {
+    position: relative;
+    bottom: 50px;
+    left:40px;
+    color:white;
+    font-weight: 700;
+  }
+  .event_main {
+    
+  }
+  .FAB {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FA6849;
+    right:50px; 
+    bottom: 50px;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px 1px black;
+    transition: all .3s;
+    
+  }
+  .FAB:hover {
+    transform: scale(1.2);
+  }
 @media screen and (max-width : 1199px) {
     .layout_main{
         flex-direction: column;
@@ -348,4 +387,20 @@ button.signin:hover {
     .menubar_mobile ul li {display: flex; flex-direction: column;justify-content: center;align-items: center;}
     .modal_main{width: 85vw;padding:10px ;}
     
+    .FAB {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #FA6849;
+      right:50px; 
+      bottom: 100px;
+      cursor: pointer;
+      box-shadow: 1px 1px 5px 1px black;
+      transition: all .3s;
+      
+    }
 }

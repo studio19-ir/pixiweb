@@ -44,6 +44,13 @@ function Home() {
     </div>
     <div className="suggest">
       <div className="title">SUGGESTION FOR YOU</div>
+      <div className="images">
+        <div>
+          <img src="/assets/rest.jpg" width={200} height={200}>
+            </img>
+          <div className='desc'>Reyhan Resturant</div>
+        </div>
+      </div>
 
     </div>
     {isOpen && <Modal setIsOpen={setIsOpen} username={Email}  />}

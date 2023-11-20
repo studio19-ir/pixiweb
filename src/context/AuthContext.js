@@ -11,6 +11,7 @@ const USER_INFO_URL = "https://pixilin.social/api/user/info";
 const RECENT_USER_URL = "https://pixilin.social/api/user/recent";
 const EMAIL_INFO_URL = "https://pixilin.social/api/user/email";
 const ACTIVE_COUNTRIES_URL = "https://pixilin.social/api/country/active";
+const SPECIALS_LIST_URL = "https://pixilin.social/api/specials/list";
 
 // set redirect_url to https://pixilin.social for production and http://localhost:3000 for development
 // get NODE build mode
@@ -26,6 +27,8 @@ const AuthProvider = ({ children }) => {
   const [isLogin, setIsLogin] = React.useState(false);
   const [isProfileCompleted, setIsProfileCompleted] = React.useState(false);
   const [countryList,setCountryList] = React.useState([]);
+  const [interestsList,setInterestsList] = React.useState([]);
+  const [skillsList,setSkillsList] = React.useState([]);
 
   // cached Data
   const [RecentUsers, setRecentUsers] = React.useState([]);
@@ -67,8 +70,19 @@ const AuthProvider = ({ children }) => {
       }
       )
   }
+  const getSpecials = async () => {
+    await axios.get(SPECIALS_LIST_URL)
+    .then(
+      (resp) => {
+          setInterestsList(resp.data.interests);
+          setSkillsList(resp.data.skills);
+      }
+      )
+
+  }
   useEffect(() => {
     getCountries();
+    getSpecials();
     Initialize();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -106,7 +120,7 @@ const AuthProvider = ({ children }) => {
       await axios
         .post(LOGIN_URL, { authCode: resp.code })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           if (response.data.success) {
             const _token = response.data.token
             localStorage.setItem("token", _token);
@@ -142,6 +156,8 @@ const AuthProvider = ({ children }) => {
         token,
         getRecentUsers,
         countryList,
+        interestsList,
+        skillsList,
         isLoading,
         setIsLoading,
         getEmailInfo,

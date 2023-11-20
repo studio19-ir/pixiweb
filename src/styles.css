@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
     --backcolor: #2E2E38;
@@ -475,7 +476,8 @@ button.signin:hover {
     min-height: 100vh;;
     background-color: var(--backcolor);
     justify-content: center;
-    align-items: center;
+
+    /* align-items: center; */
     
   }
   .complete_top{display: flex;flex-direction: column;justify-content: center;align-items: center;padding: 10px;}
@@ -497,6 +499,7 @@ button.signin:hover {
   background-color: white;
   border-radius: 30px;
   padding: 20px 50px;
+  margin:0 10em;
 }
 .complete_wrapper .title {
   font-weight: 300;
@@ -509,7 +512,7 @@ button.signin:hover {
   display: flex;
   flex-direction: column;
   padding: 20px 0;
-  gap:10px;
+  gap:15px;
 }
 .complete_wrapper .formgroup {
   display: flex;
@@ -528,15 +531,7 @@ button.signin:hover {
 .complete_wrapper select:focus {
   outline: none;
 }
-.complete_wrapper textarea {
-  resize: none;
-  font-family: "Inter",sans-serif;
-  border:1px #cdcdcd solid;
-  border-radius: 5px;
-}
-.complete_wrapper textarea:focus {
-outline: none;
-}
+
 
 @media screen and (max-width : 1199px) {
     .layout_main{

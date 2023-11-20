@@ -10,6 +10,12 @@ const RECENT_USER_URL = "https://pixilin.social/api/user/recent";
 const EMAIL_INFO_URL = "https://pixilin.social/api/user/email";
 const ACTIVE_COUNTRIES_URL = "https://pixilin.social/api/country/active";
 
+// set redirect_url to https://pixilin.social for production and http://localhost:3000 for development
+// get NODE build mode
+const mode = process.env.NODE_ENV;
+let redirect_url = (mode === "development") ? "http://127.0.0.1:3000" : "https://app.pixilin.social";
+
+
 
 
 const AuthProvider = ({ children }) => {
@@ -120,7 +126,7 @@ const AuthProvider = ({ children }) => {
         })
         .catch((err) => console.log(err));
     },
-    redirect_uri: "https://pixilin.social",
+    redirect_uri: redirect_url,
     flow: "auth-code",
   });
 

@@ -16,6 +16,11 @@ body {
 
 
 }
+.splash_main {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: var(--backcolor);
+}
 
 .main {
     display: flex;
@@ -112,12 +117,17 @@ button.signin:hover {
     padding: 2px;
     border-radius: 50px;
 }
+.menubar .profile .image img:last-child {
+  border: none;
+  position: relative;
+  bottom: -10px;
+  left:-50px;
+}
 
 .menubar .profile .username {
     color: white;
     font-size: 18px;
     font-weight: 500;
-
 }
 
 .menubar .profile .email {
@@ -215,6 +225,9 @@ button.signin:hover {
 
 
   .modal_main{
+    display: flex;
+    flex:1;
+    flex-direction: column;
     background: white;
     border-radius: 16px;
     width: 40vw;
@@ -246,20 +259,25 @@ button.signin:hover {
     top:15px;
     cursor: pointer;
   }
-  
+  .modal_top {
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.2)  1px 1px 6px;
+    
+    padding: 5px;
+  }
   .modal_modalContent {
     display: flex;
+    flex:1;
     flex-direction: column;
     padding: 10px;
+
    
   }
   .modal_contentTop {
     display: flex;
     flex-direction: row;
     gap:10px;
-    /* border-radius: 16px; */
     padding: 10px;
-    /* box-shadow: rgba(0, 0, 0, 0.8)  0 1px 3px 0; */
   }
   .modal_topData{
     display: flex;
@@ -370,6 +388,156 @@ button.signin:hover {
   .FAB:hover {
     transform: scale(1.2);
   }
+
+  .profile_main {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile_top {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* align-self: flex-start; */
+    border-radius: 16px;
+    box-shadow: rgba(0,0,0,0.2) 1px 1px 6px;
+  }
+  .profile_info{
+    display: flex;
+    flex-direction: row;
+    gap:10px
+
+  }
+  .profile_info img{
+    border-radius: 50%;
+  }
+  .profile_data {
+    display: flex;
+    flex:1;
+    flex-direction: column;
+  }
+  .profile_data div{
+    font-weight: 300;
+    font-size: 14px;
+  }
+  .profile_data div:first-child {
+    display: flex;
+    gap:2px;
+    align-items: center;
+    font-weight: 900;
+    font-size: 18px;
+  }
+  .profile_actions {
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+
+    
+  }
+  .profile_actions div{
+    display: flex;
+    justify-content: center;
+    gap:5px;
+    align-items: center;
+    border:2px var(--secondary) solid;
+    background-color: var(--secondary);
+    color:white;
+    border-radius: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+  }
+  .profile_actions div:last-child{
+    color:var(--secondary);
+    border-color: var(--secondary);
+    background-color: white;
+    
+  }
+  .profile_actions div span{
+    font-size: 12px;
+  }
+  .profile_followData {
+    display: flex;
+    padding: 10px;
+    font-weight: 500;
+    gap:50px
+  }
+  .profile_followDataItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .complete_main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;;
+    background-color: var(--backcolor);
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .complete_top{display: flex;flex-direction: column;justify-content: center;align-items: center;padding: 10px;}
+  .complete_top .image img {
+    border: 3px var(--secondary) solid;
+    padding: 2px;
+    border-radius: 50px;
+}
+.complete_top div {
+  color:white;
+  font-weight: 900;
+}
+.complete_top div:last-child {
+  font-weight: 300;
+}
+.complete_wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 30px;
+  padding: 20px 50px;
+}
+.complete_wrapper .title {
+  font-weight: 300;
+  margin: 5px 0;
+}
+.complete_wrapper .info {
+  font-size: 12px;
+}
+.complete_wrapper form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  gap:10px;
+}
+.complete_wrapper .formgroup {
+  display: flex;
+  flex-direction: column;
+}
+.complete_wrapper label {
+  font-size: 12px;
+  margin:5px 0;
+}
+.complete_wrapper select {
+  font-family: "Inter",sans-serif;
+  border:1px #cdcdcd solid;
+  border-radius: 5px;
+  height: 25px;
+}
+.complete_wrapper select:focus {
+  outline: none;
+}
+.complete_wrapper textarea {
+  resize: none;
+  font-family: "Inter",sans-serif;
+  border:1px #cdcdcd solid;
+  border-radius: 5px;
+}
+.complete_wrapper textarea:focus {
+outline: none;
+}
+
 @media screen and (max-width : 1199px) {
     .layout_main{
         flex-direction: column;

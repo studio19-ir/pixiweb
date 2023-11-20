@@ -1,44 +1,56 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import Modal from '../components/Modal';
+import Icon from '@mdi/react';
+import { mdiLoading } from '@mdi/js';
 
 function Home() {
-    const {User} = React.useContext(AuthContext);
-    const [isOpen, setIsOpen] = useState(false);
-
-    const userList = [
-      {
-        name:'Hamed Ghavami',
-        pic:'https://lh3.googleusercontent.com/a/ACg8ocKUp0la8F-AZm5RJwzNtLC3-C069a8k2k-fIXcgY3_g=s96-c'
-      },
-      {
-        name:'Ali Ghavam',
-        pic:'https://lh3.googleusercontent.com/a/ACg8ocLDGpLkGlPdlxA9mmCEUKjIWTMOuN0cNfF_LdkpTk0E7nI=s96-c'
-      }
-    ]
-    const [Email, setEmail] = useState('')
     
-    const openModal = (email) => {
+  const {token,getRecentUsers,User,RecentUsers,setRecentUsers} = useContext(AuthContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const [Email, setEmail] = useState('')
+  const openModal = (email) => {
       setEmail(email);
       setIsOpen(true);
     }
 
-  return (
-  <div className="home_main">
+    useEffect(() => {
+    
+     function getRecent() {
+        getRecentUsers(token)
+        .then(
+          (recent) => setRecentUsers(recent.data.result)
+          )
+      }
+      if ( RecentUsers.length === 0){
+        getRecent();
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    
+
+    return (
+      <div className="home_main">
     <div className="home_recent">
       <div className="title">RECENT USERS</div>
       <div className="home_recent_list">
-        {userList.map((item,index) => {
-          return(
-            <div className='home_recent_item' onClick={()=>openModal(item.name)} key={index}>
+        {!(RecentUsers?.length > 0) && <Icon path={mdiLoading} spin size={2}/>}
+        {
+        // eslint-disable-next-line
+        (RecentUsers.length > 0) && RecentUsers.map((item,index) => {
+          if (item.email !== User.email){
+            
+            return(
+              <div className='home_recent_item' onClick={()=>openModal(item.email)} key={index}>
               <div>
-              <img src={item.pic} width={'50px'} height={'50px'} style={{borderRadius:'50px'}}/>
+              <img alt="user_image" src={item.picture} width={'50px'} height={'50px'} style={{borderRadius:'50px'}}/>
               </div>
               <div className='name'>
-                {item.name}
+                {item.username}
               </div>
               </div>
           )
+        }
         })}
       </div>
     </div>
@@ -46,14 +58,14 @@ function Home() {
       <div className="title">SUGGESTION FOR YOU</div>
       <div className="images">
         <div>
-          <img src="/assets/rest.jpg" width={200} height={200}>
+          <img alt="" src="/assets/rest.jpg" width={200} height={200}>
             </img>
           <div className='desc'>Reyhan Resturant</div>
         </div>
       </div>
 
     </div>
-    {isOpen && <Modal setIsOpen={setIsOpen} username={Email}  />}
+    {isOpen && <Modal setIsOpen={setIsOpen} email={Email}  />}
   </div>
   )
 }

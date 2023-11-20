@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link, Outlet, useLocation,  } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import Icon from '@mdi/react';
-import { mdiHome,mdiAccountGroup, mdiCompass, mdiCalendarMonth, mdiAccount } from '@mdi/js';
+import { mdiHome,mdiAccountGroup, mdiCalendarMonth, mdiAccount } from '@mdi/js';
 
 function Layout(props) {
 
@@ -34,15 +34,18 @@ function Layout(props) {
         <div className="logo">Pixi<span className="dot">.</span> </div>
         <div className="profile">
           <div className="image">
-            <img src={User.picture} alt="user" width={'70px'} height={'70px'} />
+            <img src={User.picture} alt="user_photo" width={'70px'} height={'70px'} />
+            
+            <img src={User.flag} alt="user_country" width={'20'} height={'20'} />
+            
           </div>
-          <div className="username">{User.name}</div>
+          <div className="username">{User.username}</div>
           <div className="email">{User.email}</div>
         </div>
         <ul>
         <li><Icon path={mdiHome} color="white" size={1}  /> <Link to="/">Home</Link></li>
         <li><Icon path={mdiAccountGroup} color="white" size={1}  /><Link to="/community">Community</Link></li>
-        <li><Icon path={mdiCompass} color="white" size={1}  /><Link to="/maps">Maps</Link></li>
+        {/* <li><Icon path={mdiCompass} color="white" size={1}  /><Link to="/maps">Maps</Link></li> */}
         <li><Icon path={mdiCalendarMonth} color="white" size={1}  /><Link to="/events">Events</Link></li>
         <li><Icon path={mdiAccount} color="white" size={1}  /><Link to="/profile">Profile</Link></li>
 
@@ -53,7 +56,7 @@ function Layout(props) {
       <ul>
         <li><Link to="/"><Icon path={mdiHome} color="white" size={2}  /></Link></li>
         <li><Link to="/community"><Icon path={mdiAccountGroup} color="white" size={2}  /></Link></li>
-        <li><Link to="/maps"><Icon path={mdiCompass} color="white" size={2}  /></Link></li>
+        {/* <li><Link to="/maps"><Icon path={mdiCompass} color="white" size={2}  /></Link></li> */}
         <li><Link to="/events"><Icon path={mdiCalendarMonth} color="white" size={2}  /></Link></li>
         <li><Link to="/profile"><Icon path={mdiAccount} color="white" size={2}  /></Link></li>
 

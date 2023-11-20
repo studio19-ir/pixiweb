@@ -6,10 +6,11 @@ import {Login,Home,Community,Events,Maps,Profile,Layout,PageNotFound} from './pa
 import { AuthContext } from "./context/AuthContext";
 
 import './styles.css'
+import Splash from "./components/Splash";
 
 function App() {
 
-  const {isLogin} = React.useContext(AuthContext);
+  const {isLogin,isLoading} = React.useContext(AuthContext);
 
 
   const AppRoutes = [
@@ -38,6 +39,11 @@ function App() {
  const publicRoutes = useRoutes(AppPublicRoute);
  const appRoutes = useRoutes(AppRoutes);
 
+ if (isLoading) {
+  return(
+    <Splash/>
+  )
+ }
 return(
   <>
   {isLogin && appRoutes}

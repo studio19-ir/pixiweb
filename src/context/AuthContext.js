@@ -4,7 +4,9 @@ import React, { useEffect } from "react";
 
 export const AuthContext = React.createContext();
 
-const LOGIN_URL = "https://pixilin.social/api/user/login";
+const mode = process.env.NODE_ENV;
+
+const LOGIN_URL = "https://pixilin.social/api/user/login" + (mode === "development" ? "?mode=dev" : "")
 const USER_INFO_URL = "https://pixilin.social/api/user/info";
 const RECENT_USER_URL = "https://pixilin.social/api/user/recent";
 const EMAIL_INFO_URL = "https://pixilin.social/api/user/email";
@@ -12,7 +14,6 @@ const ACTIVE_COUNTRIES_URL = "https://pixilin.social/api/country/active";
 
 // set redirect_url to https://pixilin.social for production and http://localhost:3000 for development
 // get NODE build mode
-const mode = process.env.NODE_ENV;
 let redirect_url = (mode === "development") ? "http://127.0.0.1:3000" : "https://app.pixilin.social";
 
 

@@ -12,6 +12,8 @@ const RECENT_USER_URL = "https://pixilin.social/api/user/recent";
 const EMAIL_INFO_URL = "https://pixilin.social/api/user/email";
 const ACTIVE_COUNTRIES_URL = "https://pixilin.social/api/country/active";
 const SPECIALS_LIST_URL = "https://pixilin.social/api/specials/list";
+const SPECIALS_UPDATE_URL = "https://pixilin.social/api/user/specials";
+const USER_LOGOUT_URL = "https://pixilin.social/api/user/logout";
 
 // set redirect_url to https://pixilin.social for production and http://localhost:3000 for development
 // get NODE build mode
@@ -62,6 +64,11 @@ const AuthProvider = ({ children }) => {
     }
   }
 
+  const setSpecials = async (specials) => {
+    const headers = setAuthHeader(token);
+    return await axios.post(SPECIALS_UPDATE_URL, {specials},{headers})
+  }
+
   const getCountries = async () => {
     await axios.get(ACTIVE_COUNTRIES_URL)
     .then(
@@ -106,17 +113,22 @@ const AuthProvider = ({ children }) => {
     return await axios.post(RECENT_USER_URL, "", { headers });
   };
 
-  const LogOut = () => {
-    googleLogout();
-    localStorage.removeItem('token');
-    setIsLoading(true);
-    setIsLogin(false);
-    Initialize();
+  const LogOut = async () => {
+    const headers = setAuthHeader(token);
+    await axios.post(USER_LOGOUT_URL, "", { headers })
+    .then((resp) => {
+      googleLogout();
+      localStorage.removeItem('token');
+      setUser();
+      setToken();
+      setIsLogin(false);
+      Initialize();
+    })
   }
 
   const Login = useGoogleLogin({
     onSuccess: async (resp) => {
-      
+      setIsLoading(true);
       await axios
         .post(LOGIN_URL, { authCode: resp.code })
         .then((response) => {
@@ -127,6 +139,7 @@ const AuthProvider = ({ children }) => {
             setToken(_token);
             const user = getUserInfo(_token);
             user.then((resp) => {
+              // console.log(resp.data);
               if (resp.data.country) {
                 setIsLoading(false);
                 setUser(resp.data);
@@ -165,7 +178,8 @@ const AuthProvider = ({ children }) => {
         setRecentUsers,
         LogOut,
         isProfileCompleted,
-        setIsProfileCompleted
+        setIsProfileCompleted,
+        setSpecials
       }}
     >
       {children}

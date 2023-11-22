@@ -39,11 +39,11 @@ function App() {
  const publicRoutes = useRoutes(AppPublicRoute);
  const appRoutes = useRoutes(AppRoutes);
 
- if (isLoading) {
-  return(
-    <Splash/>
-  )
- }
+//  if (isLoading) {
+//   return(
+//     <Splash/>
+//   )
+//  }
 return(
   <>
   {isLogin && appRoutes}

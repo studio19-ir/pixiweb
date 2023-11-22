@@ -13,9 +13,11 @@ import useTheme from '@mui/material/styles/useTheme';
 
 const ProfileComplete = () => {
 
-    const { User, countryList, interestsList ,skillsList} = useContext(AuthContext);
+    const { User, countryList, interestsList ,skillsList,setSpecials} = useContext(AuthContext);
     const [myInterests, setMyInterests] = React.useState([]);
     const [mySkills, setMySkills] = React.useState([]);
+    const [MyCountry, setMyCountry] = React.useState('');
+    const [MyBio, setMyBio] = React.useState('');
     const theme = useTheme();
 
     const ITEM_HEIGHT = 48;
@@ -58,6 +60,48 @@ const ProfileComplete = () => {
         }
     };
 
+    const UpdateUser = (e) => {
+        e.preventDefault();
+
+        
+        
+        let interestIds = [];
+        let skillIds = [];
+        let country = MyCountry;
+        let bio = MyBio;
+        interestsList.forEach((interest) => {
+            if (myInterests.includes(interest.title)) {
+                interestIds.push(interest.id);
+            }
+        });
+        skillsList.forEach((skill) => {
+            if (mySkills.includes(skill.title)) {
+                skillIds.push(skill.id);
+            }
+        });
+
+        const specials =  {
+            country,
+            bio,
+            interests:interestIds,
+            skills:skillIds
+        }
+        setSpecials(specials)
+        .then((res)=>{
+            console.log(res.data);
+        })
+        
+        
+
+    }
+
+    const handleCountry = (e) => {
+        setMyCountry(e.target.value);
+    }
+
+    const handleBio = (e) => {
+        setMyBio(e.target.value);
+    }
 
 
     
@@ -77,10 +121,10 @@ const ProfileComplete = () => {
 
 
 
-                    <form id="createAccount">
+                    <form id="createAccount" onSubmit={UpdateUser}>
                         <FormControl style={{alignSelf:'flex-start',minWidth:'200px'}} >
                             <InputLabel id="country_label">Country</InputLabel>
-                            <Select labelId="country_label" id="country" name="country" label="country">
+                            <Select labelId="country_label" id="country" name="country" label="country" onChange={handleCountry}>
                                 {countryList?.map((c, i) => {
                                     return (
                                         <MenuItem value={c.id}><img style={{ padding: "0 5px" }} alt="country_flag" src={c.flag} width={20} height={20} /> {c.name}</MenuItem>
@@ -90,7 +134,7 @@ const ProfileComplete = () => {
                             </Select>
                         </FormControl>
                         <FormControl fullWidth >
-                            <TextField label="Bio" multiline rows={5} defaultValue={'Say about your self'} />
+                            <TextField label="Bio" multiline rows={5} defaultValue={'Say about your self'} onChange={handleBio} />
                         </FormControl>
                         <FormControl fullWidth >
                             <InputLabel id="interestsLabel">Interests</InputLabel>

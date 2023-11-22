@@ -1,8 +1,11 @@
+import { Backdrop } from '@mui/material'
 import React from 'react'
 
 const Splash = () => {
   return (
-    <div className="splash_main"></div>
+    <div className="splash_main">
+      
+    </div>
   )
 }
 

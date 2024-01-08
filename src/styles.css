@@ -532,6 +532,71 @@ button.signin:hover {
   outline: none;
 }
 
+/********* Start with Hamed **********/
+.home_recent {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+}
+.home_recent .title {
+    font-weight: 200;
+}
+.suggest .images img {
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 6px #00000021;
+    border: 1px solid #8d8d8d;
+}
+.suggest .images img:hover {
+    border-radius: 40px;
+    box-shadow: 0px 0px 20px 7px #00000057;
+    border: 1px solid #8d8d8d;
+}
+.suggest .desc {
+    font-weight: 200;
+}
+.suggest .images:hover .desc {
+    font-weight: 500;
+    transition: 0.5s;
+}
+.FAB {
+    align-items: center;
+    box-shadow: 1px 1px 15px 4px #00000026;
+    border: 1px solid #afafaf;
+}
+.modal_darkBG {
+    background: #000000bd;
+}
+.profile_top {
+    box-shadow: 1px 1px 12px 2px rgb(0 0 0 / 7%);
+}
+.profile_data {
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    justify-content: center;
+}
+.profile_data div {
+    font-family: sans-serif;
+}
+.profile_followData {
+    font-weight: 100;
+    padding: 15px 0px 0px 25px;
+    font-size: 0.9em;
+}
+.about_main {
+    min-height: 350px;
+    padding: 25px;
+    background: #eeeeee6b;
+    font-weight: 300;
+}
+.profile_actions div{
+    border: 1px;
+}
+.modal_top {
+    box-shadow: 1px 1px 12px 2px rgb(0 0 0 / 7%);
+    padding: 20px;
+}
+
 
 @media screen and (max-width : 1199px) {
     .layout_main{
